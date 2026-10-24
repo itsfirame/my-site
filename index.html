@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Transfer</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #17212b);
+            color: var(--tg-theme-text-color, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: var(--tg-theme-secondary-bg-color, #242f3d);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            width: 85%;
+            max-width: 320px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        h3 { margin-top: 0; }
+        .btn {
+            background-color: var(--tg-theme-button-color, #5288c1);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Confirm Transfer</h3>
+        <p>Do you want to confirm the transfer of this NFT/gift?</p>
+        <button class="btn" onclick="confirmTransfer()">Confirm Transfer</button>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function confirmTransfer() {
+            tg.sendData(JSON.stringify({ status: "confirmed" }));
+            tg.close();
+        }
+    </script>
+</body>
+</html>
